@@ -1,9 +1,11 @@
-const getAll = (req, res) => {
-    return res.status(200).json({
-        userId: '001',
-        userName: 'Wilhem Wundt Maxime',
-        userCreate_AT: '12-12-2022'
-    })
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { default: tasksModel } = require("../models/tasksModel")
+
+const getAll = async(req, res) => {
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const tasks = await tasksModel.getAll()
+    return res.status(200).json(tasks)
 }
 
 module.exports = {

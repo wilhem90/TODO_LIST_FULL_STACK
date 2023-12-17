@@ -1,5 +1,7 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const app = require('./app')
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config()
 
 const PORT = process.env.PORT || 3000
