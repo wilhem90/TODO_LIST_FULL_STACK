@@ -4,5 +4,22 @@ const getAll = async() => {
   return tasks;
 };
 
+const createTask = async(task) => {
+  const { title } = task;
 
-module.exports = {getAll};
+  const dateUTC = new Date(Date.now()).toUTCString();
+
+  const query = 'INSERT INTO tasks(title, status, created_at) VALUES(?, ?, ?)';
+
+  return await connection.execute(query, [title, 'pendente', dateUTC]);
+};
+
+const deleTask = async(id) => {
+  return await connection.execute('DELETE FROM tasks WHERE id = ?', [id]);
+};
+
+module.exports = {
+  getAll,
+  createTask,
+  deleTask,
+};
